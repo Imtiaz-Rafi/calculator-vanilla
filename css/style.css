@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 642px;
+    margin: auto;
+}
+
+.calc-body {
+    margin-top: 80px;
+    border: 1px solid #dadada;
+    border-radius: 8px;
+    padding: 50px 30px;
+}
+
+.display {
+    text-align: end;
+    padding-bottom: 30px;
+
+}
+
+.prev-operand {
+    height: 50px;
+    overflow: hidden;
+    font-size: 30px;
+    /* padding-bottom: 20px; */
+}
+
+.output {
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold
+}
+
+button {
+    border: none;
+}
+
+.calc-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.calc-btns>button {
+    width: 130px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 15px 0px;
+    border-radius: 6px;
+}
+
+.calc-btns>.operand,
+.calc-btns>.clear,
+.calc-btns>.delete {
+    color: #ac2a01;
+    background-color: #fdd7c1;
+}
+
+.calc-btns>.operand:hover,
+.calc-btns>.clear:hover,
+.calc-btns>.delete:hover {
+    background-color: #fcb287;
+}
+
+.calc-btns>.number {
+    background-color: #efefef;
+}
+
+.calc-btns>.zero {
+    width: 280px;
+}
+
+.calc-btns>.number:hover {
+    background-color: #bebebe;
+}
+
+.calc-btns>.equal {
+    color: #a02601;
+    background-color: #f8935a;
+}
+
+.calc-btns>.equal:hover {
+    color: #efefef;
+    background-color: #da5000;
+}
