@@ -20,10 +20,11 @@ class Calculator {
         this.prevOperand.innerText = "";
         this.output.innerText = "";
         this.token = 0;
+        this.decimal = 0;
     }
     displayReset() {
         this.currentDisplay = "";
-        this.currentValue = 0;
+        this.currentValue = "";
         this.tempOutput = "";
         this.operand = "";
         this.token = 0;
@@ -31,15 +32,24 @@ class Calculator {
 
     del() {
         this.currentDisplay = this.currentDisplay.toString().slice(0, -1);
-        this.currentValue = Math.floor(this.currentValue / 10);
+        // this.currentValue = Math.floor(this.currentValue / 10);
+        this.currentValue = this.currentValue.toString().slice(0,-1);
     }
 
     handleValue(num) {
         if (this.token == 1) {
             this.displayReset();
         }
+        if (num === ".") {
+            this.decimal = 1;
+        }
+        this.currentValue += num.toString();
+        // if(this.decimal==1){
+        //     this.currentValue = this.currentValue * 10 + parseFloat(num);
+        // }else{
+        //     this.currentValue = this.currentValue * 10 + parseFloat(num);
+        // }
         this.currentDisplay = this.currentDisplay + num.toString();
-        this.currentValue = this.currentValue * 10 + parseFloat(num);
         console.log(this.currentDisplay);
     }
 
@@ -53,8 +63,8 @@ class Calculator {
         }
         this.operand = operator;
         this.currentDisplay = this.currentDisplay + operator.toString();
-        this.tempOutput = this.tempOutput + this.currentValue;
-        this.currentValue = 0;
+        this.tempOutput = this.tempOutput + parseFloat(this.currentValue);
+        this.currentValue = "";
         console.log(this.operand);
     }
 
@@ -66,17 +76,17 @@ class Calculator {
 
     calculate() {
         if (this.operand === "+") {
-            this.tempOutput = this.tempOutput * 1 + this.currentValue;
+            this.tempOutput = this.tempOutput * 1 + parseFloat(this.currentValue);
         } else if (this.operand === "-") {
-            this.tempOutput = this.tempOutput - this.currentValue;
+            this.tempOutput = this.tempOutput - parseFloat(this.currentValue);
         } else if (this.operand === "X") {
-            this.tempOutput = this.tempOutput * this.currentValue;
+            this.tempOutput = this.tempOutput * parseFloat(this.currentValue);
         } else if (this.operand === "÷") {
-            this.tempOutput = this.tempOutput / this.currentValue;
+            this.tempOutput = this.tempOutput / parseFloat(this.currentValue);
         } else if (this.operand === "%") {
-            this.tempOutput = this.tempOutput % this.currentValue;
+            this.tempOutput = this.tempOutput % parseFloat(this.currentValue);
         } else {
-            this.tempOutput = this.currentValue;
+            this.tempOutput = parseFloat(this.currentValue);
         }
     }
 
